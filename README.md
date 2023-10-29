@@ -1,4 +1,4 @@
-![](./public/Visual Elements/logo.png)
+![](./public/Visual Elements/Logo.png)
 
 # ReadIt
 
