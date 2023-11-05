@@ -6,8 +6,8 @@ RedIt is a third-party Reddit browser created as a final project of the Front-En
 
 ## Ilustations
 
-![](./public/WireFrame/CommentsSectionWireFrame.png)
 ![](./public/WireFrame/MainPageWireFrame.png)
+![](./public/WireFrame/CommentsSectionWireFrame.png)
 
 
 ## Features
