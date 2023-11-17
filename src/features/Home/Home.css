@@ -1,0 +1,10 @@
+main {
+    column-count: 2;
+    width: 90%;
+    margin: 0 auto;
+}
+
+main > * { /* Selects all direct children of the parent element */
+    break-inside: avoid;
+  }
+  

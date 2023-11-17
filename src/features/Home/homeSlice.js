@@ -23,7 +23,10 @@ export const homeSlice = createSlice({
         postsLoaded: false
     },
     reducers: {
-        
+        setSubreddit: (state, action) =>
+        {
+            state.selectedSubreddit = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -54,3 +57,4 @@ export const isHomeLoadingPosts = (state) => state.home.isLoadingPosts;
 export const isHomeLoadingPostsError = (state) => state.home.loadingPostsHasError;
 export const arePostsLoaded = (state) => state.home.postsLoaded;
 export const getPostsForSelectedSubreddit = (state) => state.home.postsForSubreddit;
+export const { setSubreddit } = homeSlice.actions;

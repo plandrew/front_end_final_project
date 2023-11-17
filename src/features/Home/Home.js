@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, getSelectedSubreddit, getPostsForSelectedSubreddit, isHomeLoadingPosts, isHomeLoadingPostsError, arePostsLoaded } from './homeSlice';
 import { Post } from '../Post/Post';
+import { getSearchTerm } from '../Header/headerSlice';
+import './Home.css'; 
 
 const Home = () =>
 {
@@ -9,9 +11,9 @@ const Home = () =>
 
     const selectedSubreddit = useSelector(getSelectedSubreddit);
 
-    const posts = useSelector(getPostsForSelectedSubreddit)
+    const posts = useSelector(getPostsForSelectedSubreddit);
 
-    console.log(posts);
+    const searchTerm = useSelector(getSearchTerm);
 
     const postsLoaded = useSelector(arePostsLoaded)
 
@@ -24,10 +26,11 @@ const Home = () =>
         return (
             <main>
             {
-                posts.map((post, index) => (
+                posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase())).map((post, index) => (
                     <Post 
                     key = {post.id}
                     post = {post}
+                    className="post"
                     />
                 ))
             }

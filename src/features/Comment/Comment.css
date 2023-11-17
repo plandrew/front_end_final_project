@@ -1,0 +1,92 @@
+.comment {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 90% 10%;
+    grid-template-areas:
+    'avatar body'
+    'avatar additional-info';
+}
+
+.author {
+    grid-area: avatar;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.author p {
+    background-color: transparent;
+    border: 1px solid #266DB6;
+    box-sizing: border-box;
+    color: #00132C;
+    font-family: "Avenir Next LT W01 Bold",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 16px 23px;
+    position: relative;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+p {
+    max-width: 100%;
+}
+
+.author p:before {
+    background-color: #D5EDF6;
+    content: "";
+    height: calc(100% + 3px);
+    position: absolute;
+    right: 0;
+    top: +4px;
+    width: 100%;
+    z-index: -1;
+}
+
+.body {
+    position: relative;
+	background: #D5EDF6;
+	border-radius: .4em;
+    height: 100%;
+    display: flex;
+    padding-left: 2em;
+    text-align: left;
+}
+
+.body:after {
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.625em solid transparent;
+	border-right-color: #D5EDF6;
+	border-left: 0;
+	margin-top: -0.625em;
+	margin-left: -0.625em;
+}
+
+.additional-info {
+    grid-area: additional-info;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;  
+}
+
+.up-votes, .comments-nr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.up-votes img, .comments-nr img {
+    width: 1.5em;
+    height: auto;
+}

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setSearchTermInState, getSearchTerm } from './headerSlice';
+import { fetchSubreddits, getSubreddits } from './headerSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setSubreddit } from '../Home/homeSlice';
+import './Header.css'; 
 
 const Header = () =>
 {
@@ -7,36 +12,68 @@ const Header = () =>
     const dispatch = useDispatch();
 
     //Code
-    const [searchTermLocal, setSearchTermLocal] = useState('');
-
+    const [searchTerm, setSearchTerm] = useState('');
 
     const onSearchTermChange = (e) => {
-        setSearchTermLocal(e.target.value);
+        setSearchTerm(e.target.value);
       };
 
-    const onSearchTermSubmit = (e) =>
+    useEffect(() => {
+        if (searchTerm)
+        {
+            dispatch(setSearchTermInState(searchTerm));
+        }
+        
+    }, [searchTerm])
+
+    useEffect(() => {
+        dispatch(fetchSubreddits(5));
+      }, []);
+
+    const onSearchTermSubmit = () =>
     {
-        e.preventDefault();
-        //dispatch(setStateSearchTerm(searchTermLocal));
+        dispatch(setSearchTerm(searchTerm));
     }
-    
+
+    const subreddits = useSelector(getSubreddits);
+
+    const onSubredditClick = () =>
+    {
+
+    }
+
     return (
         <header>
             <figure>
                 <img src="/Visual Elements/Logo.png" alt="ReadIt Logo" />
             </figure>
             <form onSubmit={onSearchTermSubmit}>
-            <input
-                type="text"
-                placeholder="Search"
-                value={searchTermLocal}
-                onChange={onSearchTermChange}
-                aria-label="Search posts"
-            />
-            <button type="submit" aria-label="Search">
-                Search
-            </button>
+                <input
+                    type="text"
+                    placeholder="Filter posts by text"
+                    value={searchTerm}
+                    onChange={onSearchTermChange}
+                    aria-label="Search posts"
+                />
+                <button type="submit" aria-label="Search">
+                    Search
+                </button>
             </form>
+            <menu>
+            {
+            subreddits.map(subreddit => (
+                <li className="subreddit">
+                    <img className="subredditLogo" src={subreddit.header_img} />
+                    <button className="subredditButton"
+                    type="button"
+                    onClick={() => dispatch(setSubreddit(subreddit.url))}
+                    >
+                        r/{subreddit.display_name}
+                    </button>
+                </li>
+            ))
+            }
+            </menu>
         </header>
     );
 }
