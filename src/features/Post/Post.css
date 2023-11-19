@@ -1,10 +1,12 @@
 article {
-    width: 40vw;
-    border-radius: 5%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .post-container {
     position: relative;
+    border-radius: 2%;
+    overflow: hidden;
 }
 
 img {
@@ -17,6 +19,7 @@ h2 {
     color: white;
     padding: 5px 10px;
     max-width: 100%;
+    font-size: 3vw;
 }
 
 .description-container {
@@ -25,7 +28,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 1.5em;
+    font-size: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

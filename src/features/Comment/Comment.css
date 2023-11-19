@@ -1,3 +1,9 @@
+/* COMPUTER SCREEN */
+
+/* SMARTPHONE SCREEN */
+
+/* TABLET SCREEN */
+
 .comment {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -89,4 +95,8 @@ p {
 .up-votes img, .comments-nr img {
     width: 1.5em;
     height: auto;
+}
+
+@media screen and (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+     
 }

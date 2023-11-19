@@ -68,7 +68,7 @@ const Header = () =>
                     type="button"
                     onClick={() => dispatch(setSubreddit(subreddit.url))}
                     >
-                        r/{subreddit.display_name}
+                        <p>r/{subreddit.display_name}</p>
                     </button>
                 </li>
             ))

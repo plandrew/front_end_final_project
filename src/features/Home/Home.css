@@ -1,10 +1,24 @@
+/* ALL */
+
 main {
-    column-count: 2;
+    column-count: 1;
     width: 90%;
     margin: 0 auto;
 }
 
-main > * { /* Selects all direct children of the parent element */
+main > * {
     break-inside: avoid;
-  }
+}
   
+
+/* WIDE SCREEN */
+@media screen and (min-aspect-ratio: 5/6)
+{
+    main {
+        column-count: 2;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
