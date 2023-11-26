@@ -55,9 +55,6 @@ const Header = () =>
                     onChange={onSearchTermChange}
                     aria-label="Search posts"
                 />
-                <button type="submit" aria-label="Search">
-                    Search
-                </button>
             </form>
             <menu>
             {

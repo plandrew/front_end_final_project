@@ -1,12 +1,11 @@
 header {
   margin: 1%;
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 10vh auto;
   grid-template-areas: 
     "logo searchbar"
     "logo subreddits";
-  border: 1px solid;
   align-items: start;
   gap: 1%;
 }
@@ -15,7 +14,6 @@ figure {
   grid-area: logo;
   margin: 0;
   position: relative;
-  border: 1px solid red;
 }
 
 form {
@@ -25,88 +23,54 @@ form {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
 }
 
 menu {
   grid-area: subreddits;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-between;
   list-style-type: none;
-  justify-content: start;
   margin: 0;
-  border: 5px solid green;
   padding: 0;
-  align-items: stretch;
+  flex: 1;
+  flex-wrap: wrap;
 }
 
-li {
+li.subreddit {
   display: flex;
-  flex-basis: auto; /* Initial base width */
-  flex-grow: 1;
   flex-direction: column;
-  border: 1px solid black;
   align-items: center;
   justify-content: space-between;
-  margin: 1%;
-  min-width: 100px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  min-width: 15%;
+  flex-grow: 1;
 }
 
 .subredditLogo {
-  max-width: 10vw;
-  object-fit: contain;
-  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
-button {
-  background-color: transparent;
-  border: 1px solid #266DB6;
-  box-sizing: border-box;
-  color: #00132C;
-  font-family: "Avenir Next LT W01 Bold", sans-serif;
-  font-weight: 700;
-  line-height: 1vw;
-  padding: 1vw 1vw;
-  position: relative;
+.subredditButton {
+  background-color: #266DB6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
   text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  font-size: 1.5vw;
-  width: 100%;
-  align-self: flex-end; /* Position at the bottom */
-}
-
-form button {
-  align-self: auto;
-  width: auto;
-  min-width: 200px;
-}
-
-button:hover,
-button:active {
-  outline: 0;
-}
-
-button:hover {
-  background-color: transparent;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
   cursor: pointer;
-}
-
-button:before {
-  background-color: #D5EDF6;
-  content: "";
-  height: calc(100% + 3px);
-  position: absolute;
-  right: -7px;
-  top: -9px;
-  transition: background-color 300ms ease-in;
-  width: 100%;
-  z-index: -1;
-}
-
-button:hover:before {
-  background-color: #6DCFF6;
+  border-radius: 5px;
 }
 
 input[type="text"] {
@@ -124,6 +88,7 @@ input[type="text"] {
   touch-action: manipulation;
   margin-right: -1px;
   flex-grow: 1;
+  font-size: calc(12px + 0.5vw);
 }
 
 input[type="text"]:focus {
@@ -139,18 +104,19 @@ input[type="text"]::placeholder {
 /* Adjustments for responsiveness */
 @media screen and (max-aspect-ratio: 5/6) {
   header {
-    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas: 
-      "logo"
-      "searchbar"
+      "logo searchbar"
       "subreddits";
   }
 
   menu {
-    justify-content: center;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
   }
 
-  li {
-    min-width: 200px; /* Adjust for smaller screens */
+  li.subreddit {
+    min-width: 100px;
   }
 }
